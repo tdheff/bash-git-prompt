@@ -106,7 +106,7 @@ fi
 
 ```sh
 cd ~
-git clone https://github.com/magicmonty/bash-git-prompt.git .bash-git-prompt
+git clone https://github.com/tdheff/bash-git-prompt.git .gitprompt
 ```
 
 - Source the file `gitprompt.sh` from `~/.bashrc`
