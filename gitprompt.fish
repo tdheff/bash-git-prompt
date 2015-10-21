@@ -4,16 +4,17 @@ end
 
 # Colors
 # Reset
-set ResetColor (set_color normal)       # Text Reset
+set ResetColor (set_color -o yellow)       # Text Reset
 
 # Regular Colors
 set Red (set_color red)                 # Red
 set Yellow (set_color yellow);          # Yellow
 set Blue (set_color blue)               # Blue
-set WHITE (set_color white)
+set WHITE (set_color -o ffc66d)
 
 # Bold
-set BGreen (set_color -o green)         # Green
+set BGreen (set_color -o cyan)         # Green
+set BCyan (set_color -o green)
 
 # High Intensty
 set IBlack (set_color -o black)         # Black
@@ -22,10 +23,10 @@ set IBlack (set_color -o black)         # Black
 set Magenta (set_color -o purple)       # Purple
 
 # Default values for the appearance of the prompt. Configure at will.
-set GIT_PROMPT_PREFIX "["
-set GIT_PROMPT_SUFFIX "]"
+set GIT_PROMPT_PREFIX "("
+set GIT_PROMPT_SUFFIX ")"
 set GIT_PROMPT_SEPARATOR "|"
-set GIT_PROMPT_BRANCH "$Magenta"
+set GIT_PROMPT_BRANCH "$White"
 set GIT_PROMPT_STAGED "$Red● "
 set GIT_PROMPT_CONFLICTS "$Red✖ "
 set GIT_PROMPT_CHANGED "$Blue✚ "
@@ -39,9 +40,10 @@ function fish_prompt
     # Various variables you might want for your PS1 prompt instead
     set Time (date +%R)
     set PathShort (pwd|sed "s=$HOME=~=")
+    set PathShorter (echo (basename $PWD))
 
-    set PROMPT_START "$Yellow$PathShort$ResetColor"
-    set PROMPT_END " \n$WHITE$Time$ResetColor  \$ "
+    set PROMPT_START "$Red$Time $Magenta$PathShorter$ResetColor"
+    set PROMPT_END " "
 
     set -e __CURRENT_GIT_STATUS
     set gitstatus "$__GIT_PROMPT_DIR/gitstatus.py"

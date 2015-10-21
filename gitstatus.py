@@ -136,4 +136,4 @@ out = '\n'.join([
     str(stashed),
     str(clean)
 ])
-Print(out)
+Print(out.encode('utf8'))
